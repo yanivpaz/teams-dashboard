@@ -9,7 +9,7 @@ export default function TeamSelector({ teams, selected, onSelect }) {
       >
         All Teams
       </button>
-      {teams.map((t) => (
+      {[...teams].sort((a, b) => b.overall_score - a.overall_score).map((t) => (
         <button
           key={t.team}
           className={`team-tab ${selected === t.team ? 'active' : ''}`}
