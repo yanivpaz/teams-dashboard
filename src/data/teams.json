@@ -1,0 +1,135 @@
+[
+  {
+    "team": "Platform",
+    "period": "2026-04-06T13:33:44.827Z",
+    "categories": {
+      "operations": { "score": 87, "notes": "Uptime 99.9%" },
+      "security":   { "score": 92, "notes": "No incidents" },
+      "finance":    { "score": 78, "notes": "On budget" },
+      "general":    { "score": 85, "notes": "Positive stakeholder feedback" },
+      "cases": {
+        "score": 80,
+        "notes": "Avg resolution 24h",
+        "metrics": { "opened": 120, "closed": 110, "avg_resolution_hours": 24 }
+      }
+    },
+    "weights": { "operations": 0.25, "security": 0.25, "finance": 0.2, "general": 0.2, "cases": 0.1 },
+    "overall_score": 85.35,
+    "evaluated_by": "Alice Johnson",
+    "evaluated_at": "2026-04-06T13:33:44.827Z"
+  },
+  {
+    "team": "Frontend",
+    "period": "2026-04-06T13:33:44.827Z",
+    "categories": {
+      "operations": { "score": 74, "notes": "Build pipeline stable; 2 outages this quarter" },
+      "security":   { "score": 68, "notes": "XSS audit remediation in progress" },
+      "finance":    { "score": 91, "notes": "Under budget by 8%" },
+      "general":    { "score": 88, "notes": "High user satisfaction scores" },
+      "cases": {
+        "score": 72,
+        "notes": "Backlog growing; avg resolution 38h",
+        "metrics": { "opened": 95, "closed": 78, "avg_resolution_hours": 38 }
+      }
+    },
+    "weights": { "operations": 0.25, "security": 0.25, "finance": 0.2, "general": 0.2, "cases": 0.1 },
+    "overall_score": 78.45,
+    "evaluated_by": "Bob Chen",
+    "evaluated_at": "2026-04-06T13:33:44.827Z"
+  },
+  {
+    "team": "Backend",
+    "period": "2026-04-06T13:33:44.827Z",
+    "categories": {
+      "operations": { "score": 95, "notes": "Zero downtime deployments; p99 latency < 200ms" },
+      "security":   { "score": 89, "notes": "Secrets rotation completed" },
+      "finance":    { "score": 70, "notes": "Cloud costs 12% over target" },
+      "general":    { "score": 82, "notes": "Strong cross-team collaboration" },
+      "cases": {
+        "score": 91,
+        "notes": "Excellent resolution time",
+        "metrics": { "opened": 88, "closed": 90, "avg_resolution_hours": 14 }
+      }
+    },
+    "weights": { "operations": 0.25, "security": 0.25, "finance": 0.2, "general": 0.2, "cases": 0.1 },
+    "overall_score": 85.90,
+    "evaluated_by": "Carol Smith",
+    "evaluated_at": "2026-04-06T13:33:44.827Z"
+  },
+  {
+    "team": "DevOps",
+    "period": "2026-04-06T13:33:44.827Z",
+    "categories": {
+      "operations": { "score": 97, "notes": "Full IaC coverage; MTTR < 5 min" },
+      "security":   { "score": 94, "notes": "SAST/DAST integrated in all pipelines" },
+      "finance":    { "score": 83, "notes": "Reserved instances optimised" },
+      "general":    { "score": 79, "notes": "Documentation needs improvement" },
+      "cases": {
+        "score": 88,
+        "notes": "Fast incident response",
+        "metrics": { "opened": 60, "closed": 62, "avg_resolution_hours": 8 }
+      }
+    },
+    "weights": { "operations": 0.25, "security": 0.25, "finance": 0.2, "general": 0.2, "cases": 0.1 },
+    "overall_score": 89.55,
+    "evaluated_by": "David Park",
+    "evaluated_at": "2026-04-06T13:33:44.827Z"
+  },
+  {
+    "team": "QA",
+    "period": "2026-04-06T13:33:44.827Z",
+    "categories": {
+      "operations": { "score": 65, "notes": "Test environment instability impacting velocity" },
+      "security":   { "score": 77, "notes": "Penetration test findings partially addressed" },
+      "finance":    { "score": 88, "notes": "Tool licensing renegotiated; saved 15%" },
+      "general":    { "score": 90, "notes": "Release quality at all-time high" },
+      "cases": {
+        "score": 58,
+        "notes": "High volume of regression tickets",
+        "metrics": { "opened": 210, "closed": 175, "avg_resolution_hours": 52 }
+      }
+    },
+    "weights": { "operations": 0.25, "security": 0.25, "finance": 0.2, "general": 0.2, "cases": 0.1 },
+    "overall_score": 76.05,
+    "evaluated_by": "Eva Martinez",
+    "evaluated_at": "2026-04-06T13:33:44.827Z"
+  },
+  {
+    "team": "Data",
+    "period": "2026-04-06T13:33:44.827Z",
+    "categories": {
+      "operations": { "score": 81, "notes": "Pipeline SLA met; 1 ingestion delay incident" },
+      "security":   { "score": 55, "notes": "PII data classification project overdue" },
+      "finance":    { "score": 76, "notes": "Compute costs trending up with data growth" },
+      "general":    { "score": 93, "notes": "Dashboards widely adopted across org" },
+      "cases": {
+        "score": 69,
+        "notes": "Data quality issues driving ticket volume",
+        "metrics": { "opened": 145, "closed": 122, "avg_resolution_hours": 44 }
+      }
+    },
+    "weights": { "operations": 0.25, "security": 0.25, "finance": 0.2, "general": 0.2, "cases": 0.1 },
+    "overall_score": 74.15,
+    "evaluated_by": "Frank Lee",
+    "evaluated_at": "2026-04-06T13:33:44.827Z"
+  },
+  {
+    "team": "AI",
+    "period": "2026-04-06T13:33:44.827Z",
+    "categories": {
+      "operations": { "score": 42, "notes": "Model serving unstable; 3 outages this month" },
+      "security":   { "score": 28, "notes": "No data governance policy; training data audit failed" },
+      "finance":    { "score": 35, "notes": "GPU compute costs 3x over budget" },
+      "general":    { "score": 51, "notes": "Stakeholders concerned about delivery timelines" },
+      "cases": {
+        "score": 38,
+        "notes": "High volume of model quality complaints unresolved",
+        "metrics": { "opened": 340, "closed": 180, "avg_resolution_hours": 96 }
+      }
+    },
+    "weights": { "operations": 0.25, "security": 0.25, "finance": 0.2, "general": 0.2, "cases": 0.1 },
+    "overall_score": 37.55,
+    "evaluated_by": "Grace Kim",
+    "evaluated_at": "2026-04-06T13:33:44.827Z"
+  }
+]
