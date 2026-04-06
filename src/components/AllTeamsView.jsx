@@ -105,14 +105,14 @@ function CategoryComparison({ teams }) {
         <ResponsiveContainer width="100%" height={320}>
           <BarChart data={data} margin={{ top: showLabels ? 18 : 8, right: 16, left: 0, bottom: 8 }}>
             <CartesianGrid strokeDasharray="3 3" vertical={false} />
-            <XAxis dataKey="team" tick={{ fontSize: 12, fill: 'rgba(255,255,255,0.75)' }} />
-            <YAxis domain={[0, 100]} tick={{ fontSize: 11, fill: 'rgba(255,255,255,0.55)' }} />
+            <XAxis dataKey="team" tick={{ fontSize: 12, fill: '#334155', fontWeight: 600 }} />
+            <YAxis domain={[0, 100]} tick={{ fontSize: 11, fill: '#64748b' }} />
             <Tooltip contentStyle={{ background: 'rgba(15,23,42,0.85)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: 8, color: '#fff' }} />
-            <Legend wrapperStyle={{ fontSize: 12, color: 'rgba(255,255,255,0.8)' }} />
+            <Legend wrapperStyle={{ fontSize: 12, color: '#334155' }} />
             {active.map((cat) => (
               <Bar key={cat} dataKey={cat} fill={CATEGORY_COLORS[cat] ?? '#94a3b8'} radius={[3, 3, 0, 0]}>
                 {showLabels && (
-                  <LabelList dataKey={cat} position="top" style={{ fontSize: 10, fontWeight: 700, fill: '#1e293b' }} />
+                  <LabelList dataKey={cat} position="top" style={{ fontSize: 10, fontWeight: 800, fill: '#0f172a' }} />
                 )}
               </Bar>
             ))}
