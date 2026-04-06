@@ -116,7 +116,7 @@ function CategoryComparison({ teams, catEnabled, setCatEnabled, showLabels, setS
             ))}
           </div>
         </div>
-        <ResponsiveContainer width="100%" height={320}>
+        <ResponsiveContainer key={sortBy} width="100%" height={320}>
           <BarChart data={data} margin={{ top: showLabels ? 18 : 8, right: 16, left: 0, bottom: 8 }}>
             <CartesianGrid strokeDasharray="3 3" vertical={false} />
             <XAxis dataKey="team" tick={{ fontSize: 12, fill: '#334155', fontWeight: 600 }} />
