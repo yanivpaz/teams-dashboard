@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import teams from './data/teams.json';
+import config from './config.js';
 import TeamSelector from './components/TeamSelector.jsx';
 import AboutDropdown from './components/AboutDropdown.jsx';
 import AllTeamsView from './components/AllTeamsView.jsx';
@@ -56,8 +57,8 @@ export default function App() {
         <>
           <header className="dashboard-header dashboard-header--centered">
             <div>
-              <h1 className="team-name">All Teams Overview</h1>
-              <p className="period">{teams.length} teams &mdash; click any team to drill in</p>
+              <h1 className="team-name">{config.allTeamsTitle}</h1>
+              <p className="period">{config.allTeamsSubtitle.replace('{count}', teams.length)}</p>
             </div>
           </header>
           <AllTeamsView
