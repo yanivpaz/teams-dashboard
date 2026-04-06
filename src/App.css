@@ -358,6 +358,31 @@ body {
   user-select: none;
 }
 
+.sidebar-divider {
+  border: none;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  margin: 12px 0;
+}
+
+.sidebar-select-all {
+  display: block;
+  width: 100%;
+  background: rgba(0,0,0,0.05);
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 6px;
+  padding: 5px 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  text-align: center;
+  margin-bottom: 6px;
+  font-family: inherit;
+}
+.sidebar-select-all:hover {
+  background: rgba(0,0,0,0.1);
+}
+
 /* ── Summary team cards (clickable) ── */
 .summary-team-card:hover {
   transform: translateY(-2px);

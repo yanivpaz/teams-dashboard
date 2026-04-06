@@ -129,6 +129,21 @@ function CategoryComparison({ teams, catEnabled, setCatEnabled, showLabels, setS
           />
           Show scores
         </label>
+
+        <hr className="sidebar-divider" />
+        <h3 className="sidebar-title">Categories</h3>
+        <button
+          className="sidebar-select-all"
+          onClick={() => setCatEnabled(Object.fromEntries(categories.map((c) => [c, true])))}
+        >
+          Select all
+        </button>
+        <button
+          className="sidebar-select-all"
+          onClick={() => setCatEnabled(Object.fromEntries(categories.map((c) => [c, false])))}
+        >
+          Deselect all
+        </button>
       </div>
     </div>
   );
