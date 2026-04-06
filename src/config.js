@@ -1,5 +1,5 @@
 const config = {
-  allTeamsTitle: 'All Teams Overview',
+  allTeamsTitle: 'Teams dashboard ',
   allTeamsSubtitle: '{count} teams — click any team to drill in',
 };
 
