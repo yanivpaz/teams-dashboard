@@ -67,14 +67,29 @@ function Leaderboard({ teams, onSelect }) {
   );
 }
 
-function CategoryComparison({ teams, catEnabled, setCatEnabled, showLabels, setShowLabels }) {
+const SORT_OPTIONS = [
+  { value: 'default',    label: 'Default' },
+  { value: 'score-desc', label: 'Score ↓' },
+  { value: 'score-asc',  label: 'Score ↑' },
+  { value: 'alpha',      label: 'A → Z' },
+];
+
+function sortTeams(teams, sortBy) {
+  const arr = [...teams];
+  if (sortBy === 'score-desc') return arr.sort((a, b) => b.overall_score - a.overall_score);
+  if (sortBy === 'score-asc')  return arr.sort((a, b) => a.overall_score - b.overall_score);
+  if (sortBy === 'alpha')      return arr.sort((a, b) => a.team.localeCompare(b.team));
+  return arr;
+}
+
+function CategoryComparison({ teams, catEnabled, setCatEnabled, showLabels, setShowLabels, sortBy, setSortBy }) {
   const categories = Object.keys(teams[0].categories);
 
   const toggle = (cat) => setCatEnabled((prev) => ({ ...prev, [cat]: !prev[cat] }));
   const enabled = catEnabled;
   const active = categories.filter((c) => enabled[c]);
 
-  const data = teams.map((t) => {
+  const data = sortTeams(teams, sortBy).map((t) => {
     const row = { team: t.team };
     categories.forEach((cat) => { row[cat] = t.categories[cat].score; });
     return row;
@@ -129,6 +144,21 @@ function CategoryComparison({ teams, catEnabled, setCatEnabled, showLabels, setS
           />
           Show scores
         </label>
+
+        <hr className="sidebar-divider" />
+        <h3 className="sidebar-title">Sort by</h3>
+        {SORT_OPTIONS.map((opt) => (
+          <label key={opt.value} className="sidebar-toggle" style={{ marginBottom: 6 }}>
+            <input
+              type="radio"
+              name="sortBy"
+              value={opt.value}
+              checked={sortBy === opt.value}
+              onChange={() => setSortBy(opt.value)}
+            />
+            {opt.label}
+          </label>
+        ))}
 
         <hr className="sidebar-divider" />
         <h3 className="sidebar-title">Categories</h3>
@@ -190,7 +220,7 @@ function SummaryCards({ teams, onSelect }) {
   );
 }
 
-export default function AllTeamsView({ teams, onSelect, catEnabled, setCatEnabled, showLabels, setShowLabels }) {
+export default function AllTeamsView({ teams, onSelect, catEnabled, setCatEnabled, showLabels, setShowLabels, sortBy, setSortBy }) {
   return (
     <div className="dashboard-main">
       <SummaryCards teams={teams} onSelect={onSelect} />
@@ -201,6 +231,8 @@ export default function AllTeamsView({ teams, onSelect, catEnabled, setCatEnable
         setCatEnabled={setCatEnabled}
         showLabels={showLabels}
         setShowLabels={setShowLabels}
+        sortBy={sortBy}
+        setSortBy={setSortBy}
       />
     </div>
   );

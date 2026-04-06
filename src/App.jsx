@@ -44,6 +44,7 @@ export default function App() {
     Object.fromEntries(ALL_CATEGORIES.map((c) => [c, true]))
   );
   const [showLabels, setShowLabels] = useState(false);
+  const [sortBy, setSortBy] = useState('default'); // 'default' | 'score-desc' | 'score-asc' | 'alpha'
 
   const activeTeam = selected ? teams.find((t) => t.team === selected) : null;
 
@@ -68,6 +69,8 @@ export default function App() {
             setCatEnabled={setCatEnabled}
             showLabels={showLabels}
             setShowLabels={setShowLabels}
+            sortBy={sortBy}
+            setSortBy={setSortBy}
           />
         </>
       )}
