@@ -34,14 +34,6 @@ body {
   overflow-x: auto;
   padding: 0 8px 0 24px;
 }
-
-.team-selector-right {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  padding: 0 16px;
-  border-left: 1px solid rgba(255,255,255,0.1);
-}
 .team-tab {
   display: flex;
   align-items: center;
@@ -73,10 +65,10 @@ body {
 
 /* ── About dropdown ── */
 .about-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  padding: 0 8px;
+  position: fixed;
+  top: 10px;
+  right: 16px;
+  z-index: 9999;
 }
 
 .about-btn {
@@ -95,6 +87,9 @@ body {
 .about-btn:hover { background: rgba(255,255,255,0.22); }
 
 .about-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
   background: #1e293b;
   border: 1px solid rgba(255,255,255,0.12);
   border-radius: 10px;
@@ -122,6 +117,9 @@ body {
 .about-item + .about-item { border-top: 1px solid rgba(255,255,255,0.07); }
 
 .about-panel {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
   background: #fff;
   border: 1px solid #e2e8f0;
   border-radius: 12px;

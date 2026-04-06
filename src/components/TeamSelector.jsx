@@ -1,5 +1,4 @@
 import { scoreColor } from '../utils/scoreColor.js';
-import AboutDropdown from './AboutDropdown.jsx';
 
 export default function TeamSelector({ teams, selected, onSelect }) {
   return (
@@ -27,9 +26,6 @@ export default function TeamSelector({ teams, selected, onSelect }) {
             </span>
           </button>
         ))}
-      </div>
-      <div className="team-selector-right">
-        <AboutDropdown />
       </div>
     </nav>
   );

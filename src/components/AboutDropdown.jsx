@@ -5,20 +5,11 @@ const VERSION = '1.0.0';
 export default function AboutDropdown() {
   const [open, setOpen] = useState(false);
   const [panel, setPanel] = useState(null);
-  const btnRef = useRef(null);
-  const [pos, setPos] = useState({ top: 0, right: 0 });
-
-  // Recalculate drop position from button coords (escapes stacking context)
-  const updatePos = () => {
-    if (btnRef.current) {
-      const r = btnRef.current.getBoundingClientRect();
-      setPos({ top: r.bottom + 6, right: window.innerWidth - r.right });
-    }
-  };
+  const ref = useRef(null);
 
   useEffect(() => {
     function handleClickOutside(e) {
-      if (btnRef.current && !btnRef.current.closest('.about-wrapper').contains(e.target)) {
+      if (ref.current && !ref.current.contains(e.target)) {
         setOpen(false);
         setPanel(null);
       }
@@ -27,35 +18,23 @@ export default function AboutDropdown() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const openMenu = () => {
-    updatePos();
-    setOpen((v) => !v);
-    setPanel(null);
-  };
-
-  const select = (item) => {
-    updatePos();
-    setPanel(item);
-    setOpen(false);
-  };
-
-  const popupStyle = { position: 'fixed', top: pos.top, right: pos.right, zIndex: 9999 };
+  const select = (item) => { setPanel(item); setOpen(false); };
 
   return (
-    <div className="about-wrapper">
-      <button className="about-btn" ref={btnRef} onClick={openMenu}>
+    <div className="about-wrapper" ref={ref}>
+      <button className="about-btn" onClick={() => { setOpen((v) => !v); setPanel(null); }}>
         About ▾
       </button>
 
       {open && (
-        <div className="about-dropdown" style={popupStyle}>
+        <div className="about-dropdown">
           <button className="about-item" onClick={() => select('version')}>Version</button>
           <button className="about-item" onClick={() => select('help')}>Help</button>
         </div>
       )}
 
       {panel === 'version' && (
-        <div className="about-panel" style={popupStyle}>
+        <div className="about-panel">
           <div className="about-panel-header">
             <span className="about-panel-title">Version</span>
             <button className="about-panel-close" onClick={() => setPanel(null)}>✕</button>
@@ -69,7 +48,7 @@ export default function AboutDropdown() {
       )}
 
       {panel === 'help' && (
-        <div className="about-panel" style={popupStyle}>
+        <div className="about-panel">
           <div className="about-panel-header">
             <span className="about-panel-title">Help</span>
             <button className="about-panel-close" onClick={() => setPanel(null)}>✕</button>

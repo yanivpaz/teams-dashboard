@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import teams from './data/teams.json';
 import TeamSelector from './components/TeamSelector.jsx';
+import AboutDropdown from './components/AboutDropdown.jsx';
 import AllTeamsView from './components/AllTeamsView.jsx';
 import Header from './components/Header.jsx';
 import OverallScore from './components/OverallScore.jsx';
@@ -48,6 +49,7 @@ export default function App() {
   return (
     <div className="dashboard">
       <TeamSelector teams={teams} selected={selected} onSelect={setSelected} />
+      <AboutDropdown />
       {activeTeam ? (
         <TeamDashboard data={activeTeam} />
       ) : (
