@@ -10,7 +10,7 @@ const CATEGORY_COLORS = {
   security:   '#f59e0b',
   finance:    '#10b981',
   general:    '#3b82f6',
-  cases:      '#ec4899',
+  cases:      '#ef4444',
 };
 
 function Leaderboard({ teams, onSelect }) {
