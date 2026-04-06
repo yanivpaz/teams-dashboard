@@ -45,7 +45,7 @@ export default function App() {
         <TeamDashboard data={activeTeam} />
       ) : (
         <>
-          <header className="dashboard-header">
+          <header className="dashboard-header dashboard-header--centered">
             <div>
               <h1 className="team-name">All Teams Overview</h1>
               <p className="period">{teams.length} teams &mdash; click any team to drill in</p>

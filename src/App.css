@@ -73,6 +73,7 @@ body {
   gap: 12px;
 }
 .team-name { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.02em; color: #fff; text-shadow: 0 1px 6px rgba(0,0,0,0.4); }
+.dashboard-header--centered { justify-content: center; text-align: center; }
 .period { font-size: 0.875rem; color: rgba(255,255,255,0.75); margin-top: 3px; }
 .evaluated-info {
   display: flex;
