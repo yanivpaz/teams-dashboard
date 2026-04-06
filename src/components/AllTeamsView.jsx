@@ -83,7 +83,7 @@ function CategoryComparison({ teams }) {
   return (
     <div className="chart-card">
       <div className="chart-card-header">
-        <h2 className="chart-title">Category Comparison</h2>
+        <h2 className="chart-title" style={{ marginBottom: 16 }}>Category Comparison</h2>
         <div className="category-filters">
           {categories.map((cat) => (
             <label key={cat} className="cat-filter-label">
@@ -103,10 +103,10 @@ function CategoryComparison({ teams }) {
       <ResponsiveContainer width="100%" height={320}>
         <BarChart data={data} margin={{ top: 8, right: 16, left: 0, bottom: 8 }}>
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
-          <XAxis dataKey="team" tick={{ fontSize: 12 }} />
-          <YAxis domain={[0, 100]} tick={{ fontSize: 11 }} />
-          <Tooltip />
-          <Legend wrapperStyle={{ fontSize: 12 }} />
+          <XAxis dataKey="team" tick={{ fontSize: 12, fill: 'rgba(255,255,255,0.75)' }} />
+          <YAxis domain={[0, 100]} tick={{ fontSize: 11, fill: 'rgba(255,255,255,0.55)' }} />
+          <Tooltip contentStyle={{ background: 'rgba(15,23,42,0.85)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: 8, color: '#fff' }} />
+          <Legend wrapperStyle={{ fontSize: 12, color: 'rgba(255,255,255,0.8)' }} />
           {active.map((cat) => (
             <Bar key={cat} dataKey={cat} fill={CATEGORY_COLORS[cat] ?? '#94a3b8'} radius={[3, 3, 0, 0]} />
           ))}

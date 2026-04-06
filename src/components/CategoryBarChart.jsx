@@ -15,9 +15,9 @@ export default function CategoryBarChart({ categories }) {
       <ResponsiveContainer width="100%" height={260}>
         <BarChart data={data} layout="vertical" margin={{ top: 8, right: 40, left: 10, bottom: 8 }}>
           <CartesianGrid strokeDasharray="3 3" horizontal={false} />
-          <XAxis type="number" domain={[0, 100]} tick={{ fontSize: 12 }} />
-          <YAxis type="category" dataKey="name" width={90} tick={{ fontSize: 13 }} />
-          <Tooltip formatter={(v) => [`${v}`, 'Score']} />
+          <XAxis type="number" domain={[0, 100]} tick={{ fontSize: 12, fill: 'rgba(255,255,255,0.6)' }} />
+          <YAxis type="category" dataKey="name" width={90} tick={{ fontSize: 13, fill: 'rgba(255,255,255,0.85)' }} />
+          <Tooltip formatter={(v) => [`${v}`, 'Score']} contentStyle={{ background: 'rgba(15,23,42,0.85)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: 8, color: '#fff' }} />
           <Bar dataKey="score" radius={[0, 4, 4, 0]}>
             {data.map((entry) => (
               <Cell key={entry.name} fill={scoreColor(entry.score)} />
