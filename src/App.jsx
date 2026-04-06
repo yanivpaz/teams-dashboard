@@ -34,8 +34,15 @@ function TeamDashboard({ data }) {
   );
 }
 
+const ALL_CATEGORIES = Object.keys(teams[0].categories);
+
 export default function App() {
   const [selected, setSelected] = useState(null);
+  const [catEnabled, setCatEnabled] = useState(() =>
+    Object.fromEntries(ALL_CATEGORIES.map((c) => [c, true]))
+  );
+  const [showLabels, setShowLabels] = useState(false);
+
   const activeTeam = selected ? teams.find((t) => t.team === selected) : null;
 
   return (
@@ -51,7 +58,14 @@ export default function App() {
               <p className="period">{teams.length} teams &mdash; click any team to drill in</p>
             </div>
           </header>
-          <AllTeamsView teams={teams} onSelect={setSelected} />
+          <AllTeamsView
+            teams={teams}
+            onSelect={setSelected}
+            catEnabled={catEnabled}
+            setCatEnabled={setCatEnabled}
+            showLabels={showLabels}
+            setShowLabels={setShowLabels}
+          />
         </>
       )}
     </div>

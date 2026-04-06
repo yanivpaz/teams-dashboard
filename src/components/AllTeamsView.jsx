@@ -67,12 +67,11 @@ function Leaderboard({ teams, onSelect }) {
   );
 }
 
-function CategoryComparison({ teams }) {
+function CategoryComparison({ teams, catEnabled, setCatEnabled, showLabels, setShowLabels }) {
   const categories = Object.keys(teams[0].categories);
-  const [enabled, setEnabled] = useState(() => Object.fromEntries(categories.map((c) => [c, true])));
-  const [showLabels, setShowLabels] = useState(false);
 
-  const toggle = (cat) => setEnabled((prev) => ({ ...prev, [cat]: !prev[cat] }));
+  const toggle = (cat) => setCatEnabled((prev) => ({ ...prev, [cat]: !prev[cat] }));
+  const enabled = catEnabled;
   const active = categories.filter((c) => enabled[c]);
 
   const data = teams.map((t) => {
@@ -176,12 +175,18 @@ function SummaryCards({ teams, onSelect }) {
   );
 }
 
-export default function AllTeamsView({ teams, onSelect }) {
+export default function AllTeamsView({ teams, onSelect, catEnabled, setCatEnabled, showLabels, setShowLabels }) {
   return (
     <div className="dashboard-main">
       <SummaryCards teams={teams} onSelect={onSelect} />
       <Leaderboard teams={teams} onSelect={onSelect} />
-      <CategoryComparison teams={teams} />
+      <CategoryComparison
+        teams={teams}
+        catEnabled={catEnabled}
+        setCatEnabled={setCatEnabled}
+        showLabels={showLabels}
+        setShowLabels={setShowLabels}
+      />
     </div>
   );
 }
