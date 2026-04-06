@@ -22,6 +22,10 @@ npm run dev
 
 Open [http://localhost:5173](http://localhost:5173) in your browser.
 
+> **`npm run dev` vs `npm run preview`**
+> - Use `npm run dev` for day-to-day work — it starts a local server with hot reload so any change to `teams.json` or components reflects instantly in the browser.
+> - `npm run preview` serves the production build (`dist/`). You must run `npm run build` first. Only needed to test the final bundle before deploying — not for regular use.
+
 ---
 
 ## Adding or Updating Teams
