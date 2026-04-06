@@ -123,12 +123,14 @@ team-dashboard/
     ├── main.jsx
     ├── App.jsx
     ├── App.css
+    ├── config.js               # UI text configuration (title, subtitle)
     ├── data/
     │   └── teams.json          # All team data — edit this file
     ├── utils/
     │   └── scoreColor.js       # Score → color/label helpers
     └── components/
         ├── TeamSelector.jsx    # Tab bar navigation
+        ├── AboutDropdown.jsx   # About button (version string lives here)
         ├── AllTeamsView.jsx    # Overview: cards, leaderboard, comparison chart
         ├── Header.jsx          # Team name, period, evaluator
         ├── OverallScore.jsx    # Hero score card
@@ -138,6 +140,33 @@ team-dashboard/
         ├── CasesMetrics.jsx
         └── CategoryCards.jsx
 ```
+
+---
+
+## Configuration
+
+General UI settings live in `src/config.js`:
+
+```js
+const config = {
+  allTeamsTitle: 'Teams dashboard',          // Main heading on the All Teams view
+  allTeamsSubtitle: '{count} teams — click any team to drill in',  // Subheading; {count} is replaced with the number of teams
+};
+```
+
+Edit this file to change the title or subtitle. The dev server picks up changes instantly.
+
+---
+
+## Changing the App Version
+
+The version shown in the **About → Version** panel is defined in `src/components/AboutDropdown.jsx`:
+
+```js
+const VERSION = '1.0.0';
+```
+
+Change the value on that line to update it. Follows standard semantic versioning (`MAJOR.MINOR.PATCH`).
 
 ---
 
