@@ -319,6 +319,45 @@ body {
   transition: width 0.4s ease;
 }
 
+/* ── Category Comparison layout ── */
+.comparison-layout {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.chart-sidebar {
+  flex-shrink: 0;
+  width: 130px;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.sidebar-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #64748b;
+  margin-bottom: 12px;
+}
+
+.sidebar-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #1e293b;
+  cursor: pointer;
+  user-select: none;
+}
+
 /* ── Summary team cards (clickable) ── */
 .summary-team-card:hover {
   transform: translateY(-2px);

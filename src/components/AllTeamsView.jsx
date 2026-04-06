@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
-  ResponsiveContainer, Cell,
+  ResponsiveContainer, Cell, LabelList,
 } from 'recharts';
 import { scoreColor, scoreBg } from '../utils/scoreColor.js';
 
@@ -70,6 +70,7 @@ function Leaderboard({ teams, onSelect }) {
 function CategoryComparison({ teams }) {
   const categories = Object.keys(teams[0].categories);
   const [enabled, setEnabled] = useState(() => Object.fromEntries(categories.map((c) => [c, true])));
+  const [showLabels, setShowLabels] = useState(false);
 
   const toggle = (cat) => setEnabled((prev) => ({ ...prev, [cat]: !prev[cat] }));
   const active = categories.filter((c) => enabled[c]);
@@ -81,37 +82,55 @@ function CategoryComparison({ teams }) {
   });
 
   return (
-    <div className="chart-card">
-      <div className="chart-card-header">
-        <h2 className="chart-title" style={{ marginBottom: 16 }}>Category Comparison</h2>
-        <div className="category-filters">
-          {categories.map((cat) => (
-            <label key={cat} className="cat-filter-label">
-              <input
-                type="checkbox"
-                checked={enabled[cat]}
-                onChange={() => toggle(cat)}
-                style={{ accentColor: CATEGORY_COLORS[cat] ?? '#94a3b8' }}
-              />
-              <span style={{ color: enabled[cat] ? CATEGORY_COLORS[cat] : '#94a3b8' }}>
-                {cat.charAt(0).toUpperCase() + cat.slice(1)}
-              </span>
-            </label>
-          ))}
+    <div className="comparison-layout">
+      <div className="chart-card" style={{ flex: 1, minWidth: 0 }}>
+        <div className="chart-card-header">
+          <h2 className="chart-title">Category Comparison</h2>
+          <div className="category-filters">
+            {categories.map((cat) => (
+              <label key={cat} className="cat-filter-label">
+                <input
+                  type="checkbox"
+                  checked={enabled[cat]}
+                  onChange={() => toggle(cat)}
+                  style={{ accentColor: CATEGORY_COLORS[cat] ?? '#94a3b8' }}
+                />
+                <span style={{ color: enabled[cat] ? CATEGORY_COLORS[cat] : '#94a3b8' }}>
+                  {cat.charAt(0).toUpperCase() + cat.slice(1)}
+                </span>
+              </label>
+            ))}
+          </div>
         </div>
+        <ResponsiveContainer width="100%" height={320}>
+          <BarChart data={data} margin={{ top: showLabels ? 18 : 8, right: 16, left: 0, bottom: 8 }}>
+            <CartesianGrid strokeDasharray="3 3" vertical={false} />
+            <XAxis dataKey="team" tick={{ fontSize: 12, fill: 'rgba(255,255,255,0.75)' }} />
+            <YAxis domain={[0, 100]} tick={{ fontSize: 11, fill: 'rgba(255,255,255,0.55)' }} />
+            <Tooltip contentStyle={{ background: 'rgba(15,23,42,0.85)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: 8, color: '#fff' }} />
+            <Legend wrapperStyle={{ fontSize: 12, color: 'rgba(255,255,255,0.8)' }} />
+            {active.map((cat) => (
+              <Bar key={cat} dataKey={cat} fill={CATEGORY_COLORS[cat] ?? '#94a3b8'} radius={[3, 3, 0, 0]}>
+                {showLabels && (
+                  <LabelList dataKey={cat} position="top" style={{ fontSize: 10, fontWeight: 700, fill: '#1e293b' }} />
+                )}
+              </Bar>
+            ))}
+          </BarChart>
+        </ResponsiveContainer>
       </div>
-      <ResponsiveContainer width="100%" height={320}>
-        <BarChart data={data} margin={{ top: 8, right: 16, left: 0, bottom: 8 }}>
-          <CartesianGrid strokeDasharray="3 3" vertical={false} />
-          <XAxis dataKey="team" tick={{ fontSize: 12, fill: 'rgba(255,255,255,0.75)' }} />
-          <YAxis domain={[0, 100]} tick={{ fontSize: 11, fill: 'rgba(255,255,255,0.55)' }} />
-          <Tooltip contentStyle={{ background: 'rgba(15,23,42,0.85)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: 8, color: '#fff' }} />
-          <Legend wrapperStyle={{ fontSize: 12, color: 'rgba(255,255,255,0.8)' }} />
-          {active.map((cat) => (
-            <Bar key={cat} dataKey={cat} fill={CATEGORY_COLORS[cat] ?? '#94a3b8'} radius={[3, 3, 0, 0]} />
-          ))}
-        </BarChart>
-      </ResponsiveContainer>
+
+      <div className="chart-sidebar">
+        <h3 className="sidebar-title">Display</h3>
+        <label className="sidebar-toggle">
+          <input
+            type="checkbox"
+            checked={showLabels}
+            onChange={() => setShowLabels((v) => !v)}
+          />
+          Show scores
+        </label>
+      </div>
     </div>
   );
 }
