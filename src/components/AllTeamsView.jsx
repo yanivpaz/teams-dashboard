@@ -6,7 +6,7 @@ import {
 import { scoreColor, scoreBg } from '../utils/scoreColor.js';
 
 const CATEGORY_COLORS = {
-  operations: '#6366f1',
+  operations: '#94a3b8',
   security:   '#f59e0b',
   finance:    '#10b981',
   general:    '#3b82f6',
