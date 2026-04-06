@@ -26,7 +26,7 @@ function Leaderboard({ teams, onSelect }) {
             <th>Team</th>
             <th>Overall Score</th>
             <th style={{ width: '40%' }}>Bar</th>
-            <th>Evaluated By</th>
+            <th>Managed By</th>
           </tr>
         </thead>
         <tbody>

@@ -13,7 +13,7 @@ export default function Header({ team, period, evaluatedBy, evaluatedAt }) {
         <p className="period">Period: {periodDate}</p>
       </div>
       <div className="evaluated-info">
-        <span>Evaluated by <strong>{evaluatedBy}</strong></span>
+        <span>Managed by <strong>{evaluatedBy}</strong></span>
         <span className="evaluated-at">{evaluatedDate}</span>
       </div>
     </header>
