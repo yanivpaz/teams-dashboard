@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
   ResponsiveContainer, Cell,
@@ -68,6 +69,11 @@ function Leaderboard({ teams, onSelect }) {
 
 function CategoryComparison({ teams }) {
   const categories = Object.keys(teams[0].categories);
+  const [enabled, setEnabled] = useState(() => Object.fromEntries(categories.map((c) => [c, true])));
+
+  const toggle = (cat) => setEnabled((prev) => ({ ...prev, [cat]: !prev[cat] }));
+  const active = categories.filter((c) => enabled[c]);
+
   const data = teams.map((t) => {
     const row = { team: t.team };
     categories.forEach((cat) => { row[cat] = t.categories[cat].score; });
@@ -76,7 +82,24 @@ function CategoryComparison({ teams }) {
 
   return (
     <div className="chart-card">
-      <h2 className="chart-title">Category Comparison</h2>
+      <div className="chart-card-header">
+        <h2 className="chart-title">Category Comparison</h2>
+        <div className="category-filters">
+          {categories.map((cat) => (
+            <label key={cat} className="cat-filter-label">
+              <input
+                type="checkbox"
+                checked={enabled[cat]}
+                onChange={() => toggle(cat)}
+                style={{ accentColor: CATEGORY_COLORS[cat] ?? '#94a3b8' }}
+              />
+              <span style={{ color: enabled[cat] ? CATEGORY_COLORS[cat] : '#94a3b8' }}>
+                {cat.charAt(0).toUpperCase() + cat.slice(1)}
+              </span>
+            </label>
+          ))}
+        </div>
+      </div>
       <ResponsiveContainer width="100%" height={320}>
         <BarChart data={data} margin={{ top: 8, right: 16, left: 0, bottom: 8 }}>
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
@@ -84,7 +107,7 @@ function CategoryComparison({ teams }) {
           <YAxis domain={[0, 100]} tick={{ fontSize: 11 }} />
           <Tooltip />
           <Legend wrapperStyle={{ fontSize: 12 }} />
-          {categories.map((cat) => (
+          {active.map((cat) => (
             <Bar key={cat} dataKey={cat} fill={CATEGORY_COLORS[cat] ?? '#94a3b8'} radius={[3, 3, 0, 0]} />
           ))}
         </BarChart>
